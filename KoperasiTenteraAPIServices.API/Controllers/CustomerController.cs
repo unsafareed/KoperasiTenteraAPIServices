@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using KoperasiTenteraAPIServices.Application.DTOs.Customers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KoperasiTenteraAPIServices.API.Controllers
@@ -13,15 +13,18 @@ namespace KoperasiTenteraAPIServices.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        [Route("UnsaIsLove")]
-        public string GetLoveLevel()
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterCustomerAsync([FromBody] RegisterCustomerDTO request, CancellationToken ct)
         {
-            _logger.LogInformation("Unsaah loves Ushhhman <3");
-
-            _logger.LogInformation("Usman loves Unsaah <3");
-
-            return "To infinity and beyond ❤";
+            try
+            {
+                //await _otpService.GenerateEmailOtpAsync(request.Email);
+                return Ok(new { Message = "OTP Sent" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

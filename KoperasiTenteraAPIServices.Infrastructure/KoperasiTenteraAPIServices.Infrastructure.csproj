@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\Customers\CustomerRepository.cs\**" />
+    <EmbeddedResource Remove="Repositories\Customers\CustomerRepository.cs\**" />
+    <None Remove="Repositories\Customers\CustomerRepository.cs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KoperasiTenteraAPIServices.Domain\KoperasiTenteraAPIServices.Domain.csproj" />
     <ProjectReference Include="..\KoperasiTenteraAPIServices.Shared\KoperasiTenteraAPIServices.Shared.csproj" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using KoperasiTenteraAPIServices.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KoperasiTenteraAPIServices.Infrastructure.Migrations
 {
     [DbContext(typeof(APIServicesDbContext))]
-    partial class APIServicesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250426191223_Updated_Customers_Entity")]
+    partial class Updated_Customers_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,6 +84,7 @@ namespace KoperasiTenteraAPIServices.Infrastructure.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Pin")
+                        .IsRequired()
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
 
