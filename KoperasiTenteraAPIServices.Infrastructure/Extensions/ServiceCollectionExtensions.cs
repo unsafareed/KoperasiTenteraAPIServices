@@ -1,5 +1,10 @@
-﻿using KoperasiTenteraAPIServices.Infrastructure.Context;
-using Microsoft.AspNetCore.Identity;
+﻿using KoperasiTenteraAPIServices.Domain.Communication;
+using KoperasiTenteraAPIServices.Domain.Repositories.Customers;
+using KoperasiTenteraAPIServices.Domain.Repositories.OTPs;
+using KoperasiTenteraAPIServices.Infrastructure.Communication;
+using KoperasiTenteraAPIServices.Infrastructure.Context;
+using KoperasiTenteraAPIServices.Infrastructure.Repositories.Customers;
+using KoperasiTenteraAPIServices.Infrastructure.Repositories.OTPs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,14 +18,12 @@ namespace KoperasiTenteraAPIServices.Infrastructure.Extensions
             services.AddDbContext<APIServicesDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                    .AddEntityFrameworkStores<APIServicesDbContext>()
-                    .AddDefaultTokenProviders();
 
             // Register other services and repositories
-            //services.AddTransient<IConversationsRepository, ConversationsRepository>();
-            //services.AddTransient<IMessagesRepository, MessagesRepository>();
-            //services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<ISmtpEmailSender, SmtpEmailSender>();
+            services.AddTransient<ISmsService, SmsService>();
+            services.AddTransient<IOTPRepository, OTPRepository>();
 
             return services;
         }

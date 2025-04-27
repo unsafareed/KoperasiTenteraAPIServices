@@ -27,5 +27,9 @@ namespace KoperasiTenteraAPIServices.Domain.Models.Database_Models
         public string? Pin { get; set; }
 
         public byte[]? Biometric { get; set; }
+
+        public bool IsPinVerified { get; set; } = false;
+        public bool IsPhoneVerified { get; set; } = false;
+        public bool IsEmailVerified { get; set; } = false;
     }
 }

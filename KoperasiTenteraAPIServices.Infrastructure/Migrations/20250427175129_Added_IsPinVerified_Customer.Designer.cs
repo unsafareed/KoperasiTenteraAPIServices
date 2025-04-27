@@ -4,6 +4,7 @@ using KoperasiTenteraAPIServices.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KoperasiTenteraAPIServices.Infrastructure.Migrations
 {
     [DbContext(typeof(APIServicesDbContext))]
-    partial class APIServicesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250427175129_Added_IsPinVerified_Customer")]
+    partial class Added_IsPinVerified_Customer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

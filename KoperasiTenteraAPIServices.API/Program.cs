@@ -1,5 +1,6 @@
 using KoperasiTenteraAPIServices.API.Extensions;
 using KoperasiTenteraAPIServices.Infrastructure.Extensions;
+using KoperasiTenteraAPIServices.Shared.HelperModels;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,15 +16,14 @@ builder.Host.UseSerilog(logger);
 
 builder.Services.AddControllers();
 
-//builder.Host.UseSerilog(logger);
-
 builder.Services.RegisterAppServices();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Configuration.GetSection("Smtp").Bind(new SmtpConfigModel());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 var app = builder.Build();
 
